@@ -12,7 +12,7 @@ namespace CampusAssistant.DataLayer
                 NameJp = "グリーンウッド学生センター (GSC)",
                 DescriptionEn = "A hub for student activities, services, and socializing.",
                 DescriptionJp = "学生の活動、サービス、交流の中心地。"
-            }
+            },
             new CampusBuilding
             {
                 NameEn = "Lucy Phillips Building (Testing Center)",
