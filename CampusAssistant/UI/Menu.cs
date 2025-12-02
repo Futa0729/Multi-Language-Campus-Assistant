@@ -12,6 +12,8 @@ namespace CampusAssistant.UI
         private readonly TermUI _termUI;
         private readonly CampusBuildingUI _campusBuildingUI;
         private readonly GuideUI _guideUI;
+        private readonly SafetyUI _safetyUI;
+
 
 
         public Menu(LanguageService languageService)
@@ -21,7 +23,7 @@ namespace CampusAssistant.UI
             _termUI = new TermUI(_languageService);
             _campusBuildingUI = new CampusBuildingUI(_languageService);
             _guideUI = new GuideUI(languageService);
-
+            _safetyUI = new SafetyUI(_languageService);
         }
 
         public void Run()
@@ -38,7 +40,8 @@ namespace CampusAssistant.UI
                     Console.WriteLine("2. View Campus Buildings");
                     Console.WriteLine("3. Change Language");
                     Console.WriteLine("4. View Guides");
-                    Console.WriteLine("5. Exit");
+                    Console.WriteLine("5. Safety Information");
+                    Console.WriteLine("6. Exit");
                     Console.Write("Select an option: ");
                 }
                 else if (_languageService.CurrentLanguage == Language.Japanese)
@@ -47,7 +50,8 @@ namespace CampusAssistant.UI
                     Console.WriteLine("2. キャンパスの建物を見る");
                     Console.WriteLine("3. 言語を変更する");
                     Console.WriteLine("4. ガイドを見る");
-                    Console.WriteLine("5. 終了する");
+                    Console.WriteLine("5. 安全情報");
+                    Console.WriteLine("6. 終了する");
                     Console.Write("オプションを選択してください: ");
                 }
 
@@ -68,6 +72,9 @@ namespace CampusAssistant.UI
                         _guideUI.ShowGuides();
                         break;
                     case "5":
+                        _safetyUI.ShowSafetyInfo();
+                        break;
+                    case "6":
                         return;
                     default:
                         Console.WriteLine("Invalid option. Press any key to continue...");
