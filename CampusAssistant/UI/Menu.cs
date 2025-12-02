@@ -11,6 +11,8 @@ namespace CampusAssistant.UI
         private readonly LanguageUI _languageUI;
         private readonly TermUI _termUI;
         private readonly CampusBuildingUI _campusBuildingUI;
+        private readonly GuideUI _guideUI;
+
 
         public Menu(LanguageService languageService)
         {
@@ -18,6 +20,8 @@ namespace CampusAssistant.UI
             _languageUI = new LanguageUI(_languageService);
             _termUI = new TermUI(_languageService);
             _campusBuildingUI = new CampusBuildingUI(_languageService);
+            _guideUI = new GuideUI(languageService);
+
         }
 
         public void Run()
@@ -33,7 +37,8 @@ namespace CampusAssistant.UI
                     Console.WriteLine("1. View Terms");
                     Console.WriteLine("2. View Campus Buildings");
                     Console.WriteLine("3. Change Language");
-                    Console.WriteLine("4. Exit");
+                    Console.WriteLine("4. View Guides");
+                    Console.WriteLine("5. Exit");
                     Console.Write("Select an option: ");
                 }
                 else if (_languageService.CurrentLanguage == Language.Japanese)
@@ -41,7 +46,8 @@ namespace CampusAssistant.UI
                     Console.WriteLine("1. 用語を見る");
                     Console.WriteLine("2. キャンパスの建物を見る");
                     Console.WriteLine("3. 言語を変更する");
-                    Console.WriteLine("4. 終了する");
+                    Console.WriteLine("4. ガイドを見る");
+                    Console.WriteLine("5. 終了する");
                     Console.Write("オプションを選択してください: ");
                 }
 
@@ -59,6 +65,9 @@ namespace CampusAssistant.UI
                         _languageUI.SwitchLanguage();
                         break;
                     case "4":
+                        _guideUI.ShowGuides();
+                        break;
+                    case "5":
                         return;
                     default:
                         Console.WriteLine("Invalid option. Press any key to continue...");
@@ -67,9 +76,5 @@ namespace CampusAssistant.UI
                 }
             }
         }
-
-
-
-        
     }
 }
