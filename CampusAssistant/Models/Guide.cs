@@ -4,7 +4,7 @@ namespace CampusAssistant.Models
     {
         public string TitleEn { get; set; }
         public string TitleJp { get; set; }
-        public string StepsEn { get; set; }
-        public string StepsJp { get; set; }
+        public List<string> StepsEn { get; set; }
+        public List<string> StepsJp { get; set; }
     }
 }
