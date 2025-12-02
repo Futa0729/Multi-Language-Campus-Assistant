@@ -8,10 +8,14 @@ namespace CampusAssistant.UI
     public class Menu
     {
         public readonly LanguageService _languageService;
+        private readonly LanguageUI _languageUI;
+        private readonly TermUI _termUI;
 
         public Menu(LanguageService languageService)
         {
             _languageService = languageService;
+            _languageUI = new LanguageUI(_languageService);
+            _termUI = new TermUI(_languageService);
         }
 
         public void Run()
@@ -41,24 +45,24 @@ namespace CampusAssistant.UI
 
                 var choice = Console.ReadLine();
 
-                // switch (choice)
-                // {
-                //     case "1":
-                //         SearchTerms();
-                //         break;
-                //     case "2":
-                //         ShowCampusBuildings();
-                //         break;
-                //     case "3":
-                //         _languageUI.SwitchLanguage();
-                //         break;
-                //     case "4":
-                //         return;
-                //     default:
-                //         Console.WriteLine("Invalid option. Press any key to continue...");
-                //         Console.ReadKey();
-                //         break;
-                // }
+                switch (choice)
+                {
+                    case "1":
+                        _termUI.SearchTerms();
+                        break;
+                    case "2":
+                        // ShowCampusBuildings();
+                        break;
+                    case "3":
+                        _languageUI.SwitchLanguage();
+                        break;
+                    case "4":
+                        return;
+                    default:
+                        Console.WriteLine("Invalid option. Press any key to continue...");
+                        Console.ReadKey();
+                        break;
+                }
             }
         }
 
