@@ -50,7 +50,7 @@ namespace CampusAssistant.UI
                 //         ShowCampusBuildings();
                 //         break;
                 //     case "3":
-                //         SwitchLanguage();
+                //         _languageUI.SwitchLanguage();
                 //         break;
                 //     case "4":
                 //         return;
