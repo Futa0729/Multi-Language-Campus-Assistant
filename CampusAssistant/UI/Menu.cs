@@ -10,12 +10,14 @@ namespace CampusAssistant.UI
         public readonly LanguageService _languageService;
         private readonly LanguageUI _languageUI;
         private readonly TermUI _termUI;
+        private readonly CampusBuildingUI _campusBuildingUI;
 
         public Menu(LanguageService languageService)
         {
             _languageService = languageService;
             _languageUI = new LanguageUI(_languageService);
             _termUI = new TermUI(_languageService);
+            _campusBuildingUI = new CampusBuildingUI(_languageService);
         }
 
         public void Run()
@@ -51,7 +53,7 @@ namespace CampusAssistant.UI
                         _termUI.SearchTerms();
                         break;
                     case "2":
-                        // ShowCampusBuildings();
+                        _campusBuildingUI.ShowCampusBuildings();
                         break;
                     case "3":
                         _languageUI.SwitchLanguage();
