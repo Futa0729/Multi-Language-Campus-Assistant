@@ -6,5 +6,6 @@ namespace CampusAssistant.Models
         public string Japanese { get; set; }
         public string EnglishDefinition { get; set; }
         public string JapaneseDefinition { get; set; }
+        public bool IsFavorite { get; set; } = false;
     }
 }
