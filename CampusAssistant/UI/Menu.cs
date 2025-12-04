@@ -14,10 +14,11 @@ namespace CampusAssistant.UI
         private readonly GuideUI _guideUI;
         private readonly SafetyUI _safetyUI;
         private readonly FavoriteTermUI _favoriteTermUI;
+        private readonly CommunityBoardUI _communityBoardUI;
 
 
 
-        public Menu(LanguageService languageService, FavoriteTermService favoriteService)
+        public Menu(LanguageService languageService, FavoriteTermService favoriteService, CommunityBoardService communityBoardService)
         {
             _languageService = languageService;
             _languageUI = new LanguageUI(_languageService);
@@ -26,6 +27,7 @@ namespace CampusAssistant.UI
             _guideUI = new GuideUI(languageService);
             _safetyUI = new SafetyUI(_languageService);
             _favoriteTermUI = new FavoriteTermUI(_languageService, favoriteService);
+            _communityBoardUI = new CommunityBoardUI(_languageService, communityBoardService);
         }
 
         public void Run()
@@ -44,7 +46,8 @@ namespace CampusAssistant.UI
                     Console.WriteLine("4. View Guides");
                     Console.WriteLine("5. Safety Information");
                     Console.WriteLine("6. Favorite Terms");
-                    Console.WriteLine("7. Exit");
+                    Console.WriteLine("7. Community Board");
+                    Console.WriteLine("8. Exit");
                     Console.Write("Select an option: ");
                 }
                 else if (_languageService.CurrentLanguage == Language.Japanese)
@@ -55,7 +58,8 @@ namespace CampusAssistant.UI
                     Console.WriteLine("4. ガイドを見る");
                     Console.WriteLine("5. 安全情報");
                     Console.WriteLine("6. お気に入りの用語");
-                    Console.WriteLine("7. 終了する");
+                    Console.WriteLine("7. 掲示板");
+                    Console.WriteLine("8. 終了する");
                     Console.Write("オプションを選択してください: ");
                 }
 
@@ -82,6 +86,9 @@ namespace CampusAssistant.UI
                         _favoriteTermUI.ShowFavorites();
                         break;
                     case "7":
+                        _communityBoardUI.ShowBoard();
+                        break;
+                    case "8":
                         return;
                     default:
                         Console.WriteLine("Invalid option. Press any key to continue...");
