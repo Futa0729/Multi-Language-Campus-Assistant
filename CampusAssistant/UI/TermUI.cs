@@ -8,10 +8,12 @@ namespace CampusAssistant.UI
     public class TermUI
     {
         private readonly LanguageService _languageService;
+        private readonly FavoriteTermService _favoriteService;
 
-        public TermUI(LanguageService languageService)
+        public TermUI(LanguageService languageService, FavoriteTermService favoriteService)
         {
             _languageService = languageService;
+            _favoriteService = favoriteService;
         }
 
         public void SearchTerms()
@@ -63,13 +65,34 @@ namespace CampusAssistant.UI
                     {
                         Console.WriteLine($"Term: {term.English} ({term.Japanese})");
                         Console.WriteLine($"Definition: {term.EnglishDefinition}");
+                        Console.WriteLine("Add to favorites? (y/n): ");
                     }
                     else if (_languageService.CurrentLanguage == Language.Japanese)
                     {
                         Console.WriteLine($"用語: {term.Japanese} ({term.English})");
                         Console.WriteLine($"定義: {term.JapaneseDefinition}");
+                        Console.WriteLine("お気に入りに追加しますか？ (y/n): ");
+                    }
+
+                    string answer = Console.ReadLine();
+                    if (answer.ToLower() == "y")
+                    {
+                        _favoriteService.AddFavorite(term);
+
+                        
+                        if (_languageService.CurrentLanguage == Language.English)
+                        {
+                            Console.WriteLine("Term added to favorites.");
+                        }
+                        else if (_languageService.CurrentLanguage == Language.Japanese)
+                        {
+                            Console.WriteLine("用語がお気に入りに追加されました。");
+                        }
+                        Console.ReadLine();
                     }
                 }
+
+                
 
                 if (!found)
                 {
