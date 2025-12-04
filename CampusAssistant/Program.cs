@@ -8,8 +8,10 @@ namespace CampusAssistant
         static void Main(string[] args)
         {
             LanguageService languageService = new LanguageService();
-            FavoriteTermService favoriteService = new FavoriteTermService();            
-            Menu menu = new Menu(languageService, favoriteService);
+            FavoriteTermService favoriteService = new FavoriteTermService();
+            CommunityBoardService communityBoardService = new CommunityBoardService();
+
+            Menu menu = new Menu(languageService, favoriteService, communityBoardService);
             menu.Run();
         }
     }

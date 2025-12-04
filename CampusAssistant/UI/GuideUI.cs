@@ -7,7 +7,7 @@ namespace CampusAssistant.UI
 {
     public class GuideUI
     {
-        private readonly LanguageService _languageService;
+        private LanguageService _languageService;
         public GuideUI(LanguageService languageService)
         {
             _languageService = languageService;

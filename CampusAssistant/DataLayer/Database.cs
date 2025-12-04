@@ -2,7 +2,7 @@ using CampusAssistant.Models;
 using System.Collections.Generic;
 using System.Text.Json;
 
-namespace CampusAssistant.Services
+namespace CampusAssistant.DataLayer
 {
     public static class Database
     {
