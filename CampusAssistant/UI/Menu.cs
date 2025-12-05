@@ -34,6 +34,7 @@ namespace CampusAssistant.UI
         {
             while (true)
             {
+                Console.Clear();
                 Console.WriteLine("===== Multi-Language Campus Assistant =====");
                 Console.WriteLine("Current Language: " + _languageService.CurrentLanguage);
                 Console.WriteLine("===========================================");

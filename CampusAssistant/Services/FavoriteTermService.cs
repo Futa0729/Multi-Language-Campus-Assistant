@@ -8,7 +8,15 @@ namespace CampusAssistant.Services
     {
         private List<Term> LoadAllTerms()
         {
-            return Database.Load<Term>();
+            List<Term> terms = Database.Load<Term>();
+
+            if (terms.Count == 0)
+            {
+                terms = TermStore.GetAllTerms();
+                Database.Save(terms);
+            }
+
+            return terms;
         }
 
         private void SaveAllTerms(List<Term> terms)
@@ -25,6 +33,7 @@ namespace CampusAssistant.Services
                 if (term.English == target.English)
                 {
                     term.IsFavorite = true;
+                    break;
                 }
             }
 

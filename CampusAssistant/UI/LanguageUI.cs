@@ -16,6 +16,8 @@ namespace CampusAssistant.UI
 
         public void SwitchLanguage()
         {
+            Console.Clear();
+            
             if (_languageService.CurrentLanguage == Language.English)
             {
                 Console.WriteLine("Select Language:");

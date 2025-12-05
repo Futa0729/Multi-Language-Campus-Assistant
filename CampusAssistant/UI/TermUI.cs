@@ -18,6 +18,8 @@ namespace CampusAssistant.UI
 
         public void SearchTerms()
         {
+            Console.Clear();
+
             if (_languageService.CurrentLanguage == Language.English)
             {
                 Console.WriteLine("=== Term Search ===");
@@ -55,8 +57,8 @@ namespace CampusAssistant.UI
                 string englishLower = term.English.ToLower();
                 string japaneseLower = term.Japanese.ToLower();
 
-                bool englishMatch = englishLower.Contains(lowerSearchTerm);
-                bool japaneseMatch = japaneseLower.Contains(lowerSearchTerm);
+                bool englishMatch = englishLower == lowerSearchTerm;
+                bool japaneseMatch = japaneseLower == lowerSearchTerm;
 
                 if (englishMatch || japaneseMatch)
                 {
@@ -65,12 +67,14 @@ namespace CampusAssistant.UI
                     {
                         Console.WriteLine($"Term: {term.English} ({term.Japanese})");
                         Console.WriteLine($"Definition: {term.EnglishDefinition}");
+                        Console.WriteLine();
                         Console.WriteLine("Add to favorites? (y/n): ");
                     }
                     else if (_languageService.CurrentLanguage == Language.Japanese)
                     {
                         Console.WriteLine($"用語: {term.Japanese} ({term.English})");
                         Console.WriteLine($"定義: {term.JapaneseDefinition}");
+                        Console.WriteLine();
                         Console.WriteLine("お気に入りに追加しますか？ (y/n): ");
                     }
 
@@ -79,34 +83,50 @@ namespace CampusAssistant.UI
                     {
                         _favoriteService.AddFavorite(term);
 
-                        
+
                         if (_languageService.CurrentLanguage == Language.English)
                         {
                             Console.WriteLine("Term added to favorites.");
+
                         }
                         else if (_languageService.CurrentLanguage == Language.Japanese)
                         {
                             Console.WriteLine("用語がお気に入りに追加されました。");
                         }
-                        Console.ReadLine();
                     }
-                }
-
-                
-
-                if (!found)
-                {
-                    if (_languageService.CurrentLanguage == Language.English)
-                    {
-                        Console.WriteLine("No matching terms found. Press any key to return to menu.");
-                    }
-                    else if (_languageService.CurrentLanguage == Language.Japanese)
-                    {
-                        Console.WriteLine("一致する用語が見つかりません。メニューに戻るには任意のキーを押してください。");
-                    }
-                    Console.ReadLine();
+                    break;
                 }
             }
+
+            if (!found)
+            {
+                Console.WriteLine();
+                if (_languageService.CurrentLanguage == Language.English)
+                {
+                    Console.WriteLine("No matching terms found. Press Enter to return to menu.");
+                }
+                else if (_languageService.CurrentLanguage == Language.Japanese)
+                {
+                    Console.WriteLine("一致する用語が見つかりません。メニューに戻るにはEnterキーを押してください。");
+                }
+            }
+            else
+            {
+                if (_languageService.CurrentLanguage == Language.English)
+                {
+                    Console.WriteLine("Press Enter to return to menu.");
+                }
+                else if (_languageService.CurrentLanguage == Language.Japanese)
+                {
+                    Console.WriteLine("メニューに戻るにはEnterキーを押してください。");
+                }
+            }
+
+            Console.ReadLine();
+        
+
+
+                
             
 
         }
