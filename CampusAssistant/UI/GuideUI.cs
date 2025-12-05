@@ -15,6 +15,8 @@ namespace CampusAssistant.UI
 
         public void ShowGuides()
         {
+            Console.Clear();
+
             List<Guide> guides = GuideStore.GetAllGuides();
 
             if (_languageService.CurrentLanguage == Language.English)
@@ -44,6 +46,7 @@ namespace CampusAssistant.UI
 
                 Console.WriteLine($"- {title}");
                 Console.WriteLine(steps);
+                Console.WriteLine();
             }
 
             if (_languageService.CurrentLanguage == Language.English)

@@ -18,6 +18,8 @@ namespace CampusAssistant.UI
 
         public void ShowFavorites()
         {
+            Console.Clear();
+            
             List<Term> favorites = _favoriteTermService.GetFavorites();
             if (_languageService.CurrentLanguage == Language.English)
             {

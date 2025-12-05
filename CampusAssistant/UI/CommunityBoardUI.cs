@@ -19,6 +19,8 @@ namespace CampusAssistant.UI
 
         public void ShowBoard()
         {
+            Console.Clear();
+
             List<CommunityBoard> posts = _communityBoardService.GetAllPosts();
             if (_languageService.CurrentLanguage == Language.English)
             {
@@ -46,25 +48,28 @@ namespace CampusAssistant.UI
                 {
                     if (_languageService.CurrentLanguage == Language.English)
                     {
+                        Console.WriteLine("---------------");
                         Console.WriteLine("Title: " + post.Title);
                         Console.WriteLine("Author: " + post.Author);
                         Console.WriteLine("Content: " + post.Content);
                     }
                     else if (_languageService.CurrentLanguage == Language.Japanese)
                     {
+                        Console.WriteLine("---------------");
                         Console.WriteLine("タイトル: " + post.Title);
                         Console.WriteLine("著者: " + post.Author);
                         Console.WriteLine("内容: " + post.Content);
                     }
-                    Console.WriteLine();
                 }
             }
             if (_languageService.CurrentLanguage == Language.English)
             {
+                Console.WriteLine();
                 Console.Write("Create new post? (y/n): ");
             }
             else
             {
+                Console.WriteLine();
                 Console.Write("新しく投稿しますか？ (y/n): ");
             }
 
@@ -80,11 +85,13 @@ namespace CampusAssistant.UI
         {
             if (_languageService.CurrentLanguage == Language.English)
             {
+                Console.Clear();
                 Console.WriteLine("=== Create New Post ===");
                 Console.Write("Enter post title: ");
             }
             else if (_languageService.CurrentLanguage == Language.Japanese)
             {
+                Console.Clear();
                 Console.WriteLine("=== 新しい投稿を作成 ===");
                 Console.Write("投稿のタイトルを入力してください: ");
             }

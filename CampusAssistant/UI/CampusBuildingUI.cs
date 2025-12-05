@@ -16,6 +16,8 @@ namespace CampusAssistant.UI
 
         public void ShowCampusBuildings()
         {
+            Console.Clear();
+
             List<CampusBuilding> buildings = CampusStore.GetAllBuildings();
 
             if (_languageService.CurrentLanguage == Language.English)
@@ -45,6 +47,7 @@ namespace CampusAssistant.UI
                 }
 
                 Console.WriteLine($"- {name}: {description}");
+                Console.WriteLine();
             }
 
             if (_languageService.CurrentLanguage == Language.English)
